@@ -49,6 +49,6 @@
 ##### Element.getAttribute() - https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute
 ##### JSON.parse() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
 ##### JSON.stringify - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
-#### What's Best? .innerHTML, .innerText or .textContent? - https://medium.com/better-programming/whats-best-innertext-vs-innerhtml-vs-textcontent-903ebc43a3fc
+##### What's Best? .innerHTML, .innerText or .textContent? - https://medium.com/better-programming/whats-best-innertext-vs-innerhtml-vs-textcontent-903ebc43a3fc
 
 ### by Matt Stevenson | Front-End Developer @ MRP
