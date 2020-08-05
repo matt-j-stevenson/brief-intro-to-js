@@ -5,9 +5,9 @@
 #### - DOM-focused Vanilla JavaScript approach, utilising the DOM to perform CRUD operations and update local storage appropriately for re-rendering updated elements within the DOM.
 
 #### Method Two:
-#### - Data-driven Vanilla JavaScript, using one render function and updating local storage, assigning data attributes and targeting them for string-interpolation
+#### - Data-driven Vanilla JavaScript, using one render function and updating local storage, assigning data attributes and targeting them for string-interpolation.
 
-#### Note: Do notice that the second, data-driven method is more close to what we have with front-end frameworks such as React, Vue and Angular. The reason for this is this method *is* a better approach in some circumstances and has pitfalls in other areas. For example, with the DOM-focused app we simply add extra elements to the DOM, but this way it ensures that only the element we wish to update or that *has changed* will be updated. With the data-driven approach we see that *any time* something changes, or an attribute is updated, the *entire* app will re-render; this is not ideal either. This, in part, is one of the very distinct reasons we have front-end and UI development frameworks and libraries that help us perform these actions in a more concise and intuitive way.
+#### Note: Do notice that the second, data-driven method is more close to what we have with front-end frameworks such as React, Vue and Angular. The reason for this is this method *is* a better approach in some circumstances and has pitfalls in other areas. For example, with the DOM-focused app we simply add extra elements to the DOM, this way it ensures that only the element we wish to update or that *has changed* will be updated. With the data-driven approach we see that *any time* something changes, or an attribute is updated, the *entire* app will re-render; this is not ideal either. This, in part, is one of the very distinct reasons we have front-end and UI development frameworks and libraries that help us perform these actions in a more concise and intuitive way.
 
 ##### It should be known before inspecting the code to each simple CRUD application that each of these methods of writing JavaScript code to perform actions, update DOM elements or build a sustainable, scalable and maleable User Interfaces are neither deemed to be the best ways in which to do so *or* supposing that these JavaScript skills should be taken for gospel in front-end development, it is simply a way in which to visualise further the operations of JavaScript that let us interact with the browser in a more primitive, granular sense. 
 
@@ -18,9 +18,9 @@
 ##### 1. Drag and drop the CRUD .html files into Google Chrome.
 ##### 1(alt.) Open VSCode, select 'Extensions', install 'Live Server' by Ritwick Dey. Navigate to bottom right of VSCode window, select 'Go Live' button (this will open a local html-server window on Chrome).
 ##### 2. Right-click on the web browser window were the app is loaded, click 'Inspect' ('Inspect Element' on Windows).
-##### Open the 'Console' to see what actions are taking place in the app when you add new items, edit them or delete them.
-##### Navigate to 'Application' in Inspect side-panel, select 'Local Storage'. From here you can see what data is being saved into local storage (strings).
-##### Click on the 'Value' header to view the data format.
+##### 3. Open the 'Console' to see what actions are taking place in the app when you add new items, edit them or delete them.
+##### 4. Navigate to 'Application' in Inspect side-panel, select 'Local Storage'. From here you can see what data is being saved into local storage (strings).
+##### 5. Click on the 'Value' header to view the data format.
 
 #### The .htmls files in each folder contain the exact same 'application', each portion of code generates the exact same output. One difference is that they are designed differently, not the look and feel - but the code structure and the approach to which the actions we need to perform are performed.
 
