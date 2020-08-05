@@ -24,7 +24,8 @@
 
 #### The .htmls files in each folder contain the exact same 'application', each portion of code generates the exact same output. One difference is that they are designed differently, not the look and feel - but the code structure and the approach to which the actions we need to perform are performed.
 
-##### * Note: There is an annotated version of the DOM-focused CRUD App, this attempts to explain each action and start to dismantle the code in a way that can be interpreted at a lower-level than the plain file w/out comments. The data-driven approach will be annotated soon.
+##### * Note: There is an annotated version of the DOM-focused CRUD App, this attempts to explain each action and start to dismantle the code in a way that can be interpreted at a lower-level than the plain file w/out comments. The data-driven approach will be annotated soon. 
+#### * Until then, can you see the differences in each approach? Do you see the drawbacks *both* methods have? If you are familiar with JavaScript already, what might you have done differently? Have you had experience writing ES6 standard and contemporay JavaScript before? Have you used or researched a front-end framework like React or Vue? Why do we use them?
 
 ## - Research materials and relevant documentation:
 ##### JavaScript - https://developer.mozilla.org/en-US/docs/Web/JavaScript
