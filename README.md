@@ -7,7 +7,7 @@
 #### Method Two:
 #### - Data-driven Vanilla JavaScript, using one render function and updating local storage, assigning data attributes and targeting them for string-interpolation.
 
-#### Note: Do notice that the second, data-driven method is more close to what we have with front-end frameworks such as React, Vue and Angular. The reason for this is this method *is* a better approach in some circumstances and has pitfalls in other areas. For example, with the DOM-focused app we simply add extra elements to the DOM, this way it ensures that only the element we wish to update or that *has changed* will be updated. With the data-driven approach we see that *any time* something changes, or an attribute is updated, the *entire* app will re-render; this is not ideal either. This, in part, is one of the very distinct reasons we have front-end and UI development frameworks and libraries that help us perform these actions in a more concise and intuitive way.
+#### Note: Do notice that the second, data-driven method is similiar and resembles that of what we know from front-end frameworks such as React, Vue. In React, a software design principle has become seemingly intrisic to it's nature in recent times is a 'functional programming' approach, which not only promotes enabling the majority of your code-base to be executable functions, but ensures that . The reason for this is this method *is* a better approach in some circumstances and has pitfalls in other areas. For example, with the DOM-focused app we simply add extra elements to the DOM, this way it ensures that only the element we wish to update or that *has changed* will be updated. With the data-driven approach we see that *any time* something changes, or an attribute is updated, the *entire* app will re-render; this is not ideal either. This, in part, is one of the very distinct reasons we have front-end and UI development frameworks and libraries that help us perform these actions in a more concise and intuitive way.
 
 ##### It should be known before inspecting the code to each simple CRUD application that each of these methods of writing JavaScript code to perform actions, update DOM elements or build a sustainable, scalable and maleable User Interfaces are neither deemed to be the best ways in which to do so *or* supposing that these JavaScript skills should be taken for gospel in front-end development, it is simply a way in which to visualise further the operations of JavaScript that let us interact with the browser in a more primitive, granular sense. 
 
@@ -31,6 +31,7 @@
 ##### JavaScript - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 ##### JavaScript - Objects and Arrays - https://eloquentjavascript.net/04_data.html
 ##### Why aren't these functions? What are these arrows? All that, and more, here - https://medium.com/recraftrelic/es5-vs-es6-with-example-code-9901fa0136fc
+##### Functional Programming - Why is it a good approach for Front-End Development? - https://danielpedroso.com/2019/02/25/functional-programming-and-react/
 ##### React.js - https://reactjs.org/
 ##### DOM (Document Object Model) - https://en.wikipedia.org/wiki/Document_Object_Model
 ##### Local Storage - https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
