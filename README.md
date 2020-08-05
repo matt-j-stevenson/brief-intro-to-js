@@ -1,12 +1,15 @@
 # MRP - A Brief Introduction to JavaScript
 ## Creating CRUD (Create, Read, Update, Delete) applications in Vanilla JavaScript
 
+#### Method One:
 #### - DOM-focused Vanilla JavaScript approach, utilising the DOM to perform CRUD operations and update local storage appropriately for re-rendering updated elements within the DOM.
-#### - Data-driven, using one render function, listening to changes, updating individual elements, re-rendering the entire templating (rather than just one element)
 
-#### It should be known before inspecting the code to each simple CRUD application that each of these methods of writing JavaScript code to perform actions, update DOM elements or build a sustainable, scalable and maleable User Interfaces are neither deemed to be the best ways in which to do so, by any means.
+#### Method Two:
+#### - Data-driven, using one render function, listening to changes, re-rendering the entire templating (rather than just one element).
 
-#### These examples simply demonstrate two alternate ways in which the same simple, CRUD application can be written with a short HTML block and some corresponding JavaScript functions in an attempt to unlock deeper levels of knowledge about the inner-workings and what's going on "under the hood" before jumping into a front-end framework like React or Vue.
+##### It should be known before inspecting the code to each simple CRUD application that each of these methods of writing JavaScript code to perform actions, update DOM elements or build a sustainable, scalable and maleable User Interfaces are neither deemed to be the best ways in which to do so *or* supposing that these JavaScript skills should be taken for gospel in front-end development, it is simply a way in which to visualise further the operations of JavaScript that let us interact with the browser in a more primitive, granular sense. 
+
+##### These examples simply demonstrate two alternate ways in which the same simple, CRUD application can be written with a short HTML block and some corresponding JavaScript functions in an attempt to unlock deeper levels of knowledge about the inner-workings and what's going on "under the hood" before jumping into a front-end framework like React or Vue.
 
 ## Getting Started w/ "MRP - A Brief Introduction to JavaScript"
 #### You don't need anything other than a text-editor (IDE, pref. VSCode) to view code, a browser (pref. Google Chrome), and that's it!
