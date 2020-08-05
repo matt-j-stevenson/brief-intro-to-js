@@ -1,0 +1,71 @@
+<html>
+<title>DOM Focused CRUD App</title>
+
+<form id="form">
+  <input id="field" type="text" autocomplete="off" />
+  <button>Create Item</button>
+</form>
+<ul id="list"></ul>
+
+<script>
+  const form = document.querySelector("#form")
+  const field = document.querySelector("#field")
+  const list = document.querySelector("#list")
+  let data = []
+
+  if (localStorage.getItem("dom-focused")) {
+    data = JSON.parse(localStorage.getItem("dom-focused"))
+  }
+
+  const template = (item) => {
+    console.log('App mounted.')
+    return (
+      `<li>
+      <span id="value">${item}</span>
+      <button onclick="update(this)">Edit</button>
+      <button onclick="cut(this)">Delete</button>
+    </li>`
+    )
+  }
+
+  const load = () => {
+    list.innerHTML = data
+      .map(item => {
+        return template(item)
+      })
+      .join("")
+  }
+  load(console.log('Data loaded from local storage.'))
+
+  form.addEventListener("submit", e => {
+    e.preventDefault()
+    list.insertAdjacentHTML("beforeend", template(field.value))
+    field.value = ""
+    save(console.log('Item added.'))
+  })
+
+  const save = () => {
+    let all = []
+    let forAll = list.querySelectorAll("li").forEach(el => {
+      all.push(el.querySelector("#value").innerHTML)
+    })
+    localStorage.setItem("dom-focused", JSON.stringify(all))
+    console.log('App re-rendered.')
+  }
+
+  const update = (el) => {
+    let updated = prompt("Enter new value.", el.parentElement.querySelector(".value").innerHTML)
+    if (updated) {
+      el.parentElement.querySelector("#value").innerHTML = updated
+    }
+    save('Item Updated.')
+  }
+
+  const cut = (el) => {
+    el.parentElement.remove()
+    save('Item deleted.')
+  }
+
+</script>
+
+</html>

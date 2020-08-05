@@ -1,0 +1,87 @@
+<html>
+<title>Data-driven CRUD App</title>
+<div id="app"></div>
+<script>
+  let data = []
+
+  const load = () => {
+    if (localStorage.getItem("data-driven")) {
+      data = JSON.parse(localStorage.getItem("data-driven"))
+    }
+  }
+  load(console.log('Data loaded from local storage.'))
+
+  const render = () => {
+    document.querySelector("#app").innerHTML =
+      `<form onsubmit="submitHandler(event)">
+        <input id="field" type="text" autocomplete="off" />
+        <button>Create Item</button>
+      </form>
+      <ul>
+        ${data
+          .map(item => {
+            return (
+              `<li>
+                ${item.value}
+                <button
+                  data-value="${item.value}"
+                  data-id="${item.id}"
+                  onclick="update(this)"
+                >
+                Edit
+                </button>
+                <button
+                  data-id="${item.id}"
+                  onclick="cut(this)"
+                >
+                Delete
+                </button>
+              </li>`
+            )
+          })
+          .join("")}
+      </ul>`
+  }
+  render(console.log('App mounted.'))
+
+  const save = () => {
+    render(console.log('App re-rendered.'))
+    localStorage.setItem("data-driven", JSON.stringify(data))
+  }
+
+  const update = (el) => {
+    const idToUpdate = el.getAttribute("data-id")
+    let isUpdated = prompt("Enter new value:", el.getAttribute("data-value"))
+    if (isUpdated) {
+      data = data.map(item => {
+        if (item.id == idToUpdate) {
+          item.value = isUpdated
+        }
+        return item
+      })
+      save(console.log('Item updated.'))
+    }
+  }
+
+  const cut = (el) => {
+    const idToRemove = el.getAttribute("data-id")
+    data = data.filter(item => {
+      return item.id != idToRemove
+    })
+    save(console.log('Item deleted.'))
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    data.push({
+      value: document.querySelector("#field").value,
+      id: genId(console.log('New item ID generated.'))
+    })
+    save(console.log('Item added.'))
+  }
+
+  const genId = () => {
+    return 'mrp-' + Math.random().toString(12).substr(2, 10)
+  }
+
+</script>

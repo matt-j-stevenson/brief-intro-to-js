@@ -1,0 +1,169 @@
+<!-- MRP Prelytix - A Brief Introduction to JavaScript -->
+<!-- DOM Focused CRUD Application in Vanilla JS -->
+
+<!-- To use this file simply drag it into Google Chrome! -->
+
+<!-- This document describes how to build a totally "Vanilla" JavaScript
+     CRUD (Create, Read, Update, Delete) "app" without the need for any
+     third-party libraries, frameworks or extensions - just plain old
+     JavaScript (ES6) loaded with some HTML in the browser.
+     No styling involved.
+
+     Don't forget, this is a very specific approach to building a simple CRUD app,
+     it is 'DOM-focused'. This means that we are utilising the Document Object Model
+     to obtain references to our elements and manipulate them individually - be that
+     creating, editing or deleting them from Local Storage.
+     Note, there are several other and debatabley better ways to do this, for example -
+     A data driven approach which re-renders the content entirely upon changes being applied
+     to the data (just something to note!)
+
+     There is also front-end JavaScript frameworks that are widely used and ensure that this process
+     of writing JavaScript code to build front-end UI's is far less cumbersome whilst enabling some pretty
+     nifty features that you'll definitely want to get to know soon for use with 'React' a framework designed
+     and maintained by Facebook (Note, there is also 'Angular' by Google and Vue). With React being the most widely used
+     and debated to be the 'best' for front-end development.
+
+     Read up on React: https://reactjs.org/
+     Read up on Vue: https://vuejs.org/
+     Read up on Angular: https://angular.io/
+
+     Find out more on the DOM here:
+     https://en.wikipedia.org/wiki/Document_Object_Model
+
+     Find out about Local Storage here:
+     https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+
+     * To view Local Storage updates on Google Chrome, right click, select 'Inspect Element'
+     ('Inspect' on MacOS), select 'Application' and under 'Storage' you will see 'Local Storage',
+     click here and you will see the DOM updates taking place in real-time within the browser. *
+-->
+
+<!-- HTML -->
+<html>
+<title>DOM Focused CRUD App (Annotated)</title>
+<!-- Create form HTML element, assign id field 'formBody' -->
+<form id="formBody">
+  <!-- Create input HTML element, assign id field 'textField', specify type of text, disable
+       autocomplete -->
+  <input id="textField" type="text" autocomplete="off" />
+  <!-- Create button HTML element, there is no id property needed here as we later target this
+       button in the JavaScript by using an event listener for 'submit' on the form element -->
+  <button>Create Item</button>
+</form>
+<!-- Create an empty, unordered list HTML element, assign id field 'itemList' -->
+<ul id="itemList"></ul>
+<!-- CLOSE HTML -->
+
+<!-- JAVASCRIPT -->
+<!-- Script tags are required in an HTML document in order to use JavaScript -->
+<script>
+  // Create constant 'variables' for each element and obtain id's via the document
+  // query selector. Note, there are a few different ways we can target and obtain
+  // id's or class names of the document in JavaScript; here, we use the 'querySelector',
+  // but we could also viably use 'getElementById'. Do you know which is best for this
+  // scenario? Read more here: https://beamtic.com/getelementbyid-vs-queryselector
+  // We use constants here as we know that these 'variables' won't change, they're
+  // simply selectors for our elements.
+  const form = document.querySelector("#formBody")
+  const field = document.querySelector("#textField")
+  const list = document.querySelector("#itemList")
+  // Create a new, blank data array as a variable. Note, here we declare this as 'let',
+  // not 'var'. 'Let' variables are much more widely used in modern, contemporary JavaScript as
+  // they have their scope within the 'block' they are defined, whereas variables declared as 'var'
+  // are 'function scoped' - meaning they are available throughout the wider program.
+  // Let variables are also known as 'local variables'.
+  // Read more here: https://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var
+  let data = []
+  // Check if the item 'DOM-data' exists in Local Storage...
+  // Apply an event listener to the form constant containing the query selector (id) of our form HTML element.
+  // Pass the keyword submit as a string parameter along with 'e' (Standing for 'event') in an ES6 arrow function.
+  // Read more here: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+  form.addEventListener("submit", e => {
+    // Using 'preventDefault' on the event here disables the default action from being carried out, here, that would
+    // mean the submit action is not executed as it would if this function weren't called on our 'event'.
+    // Read more here: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+    e.preventDefault()
+    // Insert the text as HTML into the list via '.insertAdjacentHTML', here, we need to specify where we want the HTML
+    // to be loaded, we then pass the value of the input field to the template. Here, we use "beforeend", this means
+    // the HTML will be inserted before the end of each item in the list.
+    list.insertAdjacentHTML("beforeend", template(field.value))
+    // Reset the input field value to a blank string, could we use 'field.value = null' here? What is best for this use-case?
+    // Read more here: https://tinyurl.com/y548dltw
+    field.value = ""
+    // Call the saveData function and execute it's contents.
+    saveData()
+  })
+  // Create a simple template function and pass 'item' as a parameter to be used later...
+  function template(item) {
+    // Here, just like any function in JavaScript we can return a series of HTML that looks a bit odd, that's because it has one difference.
+    // We are using 'backticks' to enclose this HTML code, the reason for this is that we will later need to use our quotation
+    // marks for specifying id's, classes or even function calls like we see on the buttons 'onclick' property.
+    // Something to note here is that within our 'backticked' HTML we can use something called a 'template literal'. A template
+    // literal allows expressions to be embedded into our HTML and is used here for 'string interpolation', where the value 'item'
+    // being passed in is prefixed with a dollar sign and enclosed in curly braces, prompting to the browser that we want the string
+    // to be rendered here as the 'item' parameter we passed into the function.
+    // Read more here (Template Literals): https://tinyurl.com/y2zj5baf
+    // Read more here (String interpolation): https://dmitripavlutin.com/string-interpolation-in-javascript/
+    return (
+      `<li>
+        <span class="value">${item}</span>
+        <button onclick="editData(this)">Edit</button>
+        <button onclick="deleteData(this)">Delete</button>
+      </li>`
+    )
+  }
+  // Create the UI loading function and set the list element's 'innerHTML' to our 'data' array being populated
+  // by our Local Storage data...
+  function loadUI() {
+    list.innerHTML = data
+      // We then map (similar to a loop) over the data, pass 'item' as a parameter to an ES6 arrow function and set the 'item' parameter
+      // within our template.
+      .map(item => template(item))
+      // Since we are using Local Storage, a comma will be applied in between each of our values stored there, to counteract this
+      // during render of the items we can use '.join' and pass an empty string to remove it.
+      .join("")
+    // Read more about '.map' here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+    // Read more about '.join' here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+  }
+  // Create our save data function along with a new, blank array for all of our items, store this in a let variable...
+  function saveData() {
+    let allItems = []
+    // Create another array and select all 'li' elements, loop through them and pass 'el' (Standing for 'element') to an ES6 arrow function
+    // then, push all our values innerHTML to the 'allItems' array.
+    // Do you know the difference between '.map' and '.forEach' in JavaScript?
+    // Find out here: https://codeburst.io/javascript-map-vs-foreach-f38111822c0f
+    let itemArray = list.querySelectorAll("li").forEach(el => {
+      allItems.push(el.querySelector(".value").innerHTML)
+    })
+    // Then, set the item in Local Storage to our 'allItems' array, make sure this is 'stringified' via JSON to ensure it can be saved to
+    // Local Storage; remember, LS only accepts strings, not values or objects.
+    localStorage.setItem("local-data", JSON.stringify(allItems))
+  }
+  // Create our edit function and pass our element (el) as a parameter...
+  function editData(el) {
+    // Create a let variable and initialiase it as a window 'prompt' that will be displayed in the browser.
+    // Read more here (prompt): https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+    let updated = prompt("Enter new value:", el.parentElement.querySelector(".value").innerHTML)
+    // Check if the varibale 'updated' exists (has been updated)...
+    if (updated) {
+      // And then assign the updated value within the prompt to the elements parent, select this via '.value' class and use it's innerHTML
+      // We use the parent element here as that is what describes the window prompt that
+      // Read more here: https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement
+      el.parentElement.querySelector(".value").innerHTML = updated
+    }
+    // Finally, run save data function to save change.
+    saveData()
+  }
+  // Create our delete function and pass our element as a parameter...
+  function deleteData(el) {
+    // Use DOM remove() function on the elements parent.
+    // Read more here: https://www.w3schools.com/jsref/met_select_remove.asp
+    el.parentElement.remove()
+    // Execute save data function to save change.
+    saveData()
+  }
+
+</script>
+<!-- CLOSE JAVASCRIPT -->
+
+</html>
