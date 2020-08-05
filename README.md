@@ -24,7 +24,7 @@
 
 #### The .htmls files in each folder contain the exact same 'application', each portion of code generates the exact same output. One difference is that they are designed differently, not the look and feel - but the code structure and the approach to which the actions we need to perform are performed.
 
-#### - Research materials and relevant documentation:
+## - Research materials and relevant documentation:
 ##### JavaScript - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 ##### JavaScript - Objects and Arrays - https://eloquentjavascript.net/04_data.html
 ##### Why aren't these functions? What are these arrows? All that, and more, here - https://medium.com/recraftrelic/es5-vs-es6-with-example-code-9901fa0136fc
