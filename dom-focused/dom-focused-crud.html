@@ -15,10 +15,10 @@
 
   if (localStorage.getItem("dom-focused")) {
     data = JSON.parse(localStorage.getItem("dom-focused"))
+    console.log('App mounted.')
   }
 
   const template = (item) => {
-    console.log('App mounted.')
     return (
       `<li>
       <span id="value">${item}</span>
@@ -40,8 +40,8 @@
   form.addEventListener("submit", e => {
     e.preventDefault()
     list.insertAdjacentHTML("beforeend", template(field.value))
+    save(console.log(`Item added: '${field.value}'`))
     field.value = ""
-    save(console.log('Item added.'))
   })
 
   const save = () => {
@@ -54,16 +54,16 @@
   }
 
   const update = (el) => {
-    let updated = prompt("Enter new value.", el.parentElement.querySelector(".value").innerHTML)
+    let updated = prompt("Enter new value.", el.parentElement.querySelector("#value").innerHTML)
     if (updated) {
       el.parentElement.querySelector("#value").innerHTML = updated
     }
-    save('Item Updated.')
+    save(console.log(`Item updated to: ${updated}.`))
   }
 
   const cut = (el) => {
-    el.parentElement.splice()
-    save('Item deleted.')
+    el.parentElement.remove()
+    save(console.log('Item deleted.'))
   }
 
 </script>

@@ -51,15 +51,15 @@
 
   const update = (el) => {
     const idToUpdate = el.getAttribute("data-id")
-    let isUpdated = prompt("Enter new value:", el.getAttribute("data-value"))
-    if (isUpdated) {
+    let updated = prompt("Enter new value:", el.getAttribute("data-value"))
+    if (updated) {
       data = data.map(item => {
         if (item.id == idToUpdate) {
-          item.value = isUpdated
+          item.value = updated
         }
         return item
       })
-      save(console.log('Item updated.'))
+      save(console.log(`Item '${idToUpdate}' updated to: '${updated}'.`))
     }
   }
 
@@ -68,7 +68,7 @@
     data = data.filter(item => {
       return item.id != idToRemove
     })
-    save(console.log('Item deleted.'))
+    save(console.log(`Item '${idToRemove}' deleted.`))
   }
 
   const submitHandler = (e) => {
@@ -77,7 +77,7 @@
       value: document.querySelector("#field").value,
       id: genId(console.log('New item ID generated.'))
     })
-    save(console.log('Item added.'))
+    save(console.log(`Item added.`))
   }
 
   const genId = () => {
