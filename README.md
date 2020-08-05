@@ -39,7 +39,7 @@
 ##### Template Literals - https://tinyurl.com/y2zj5baf
 ##### String Interpolation, what is it? - https://dmitripavlutin.com/string-interpolation-in-javascript/
 ##### Array.prototype.map() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
-##### Array.prototype.forEach() - https://www.google.com/search?rlz=1C5CHFA_enGB834GB834&sxsrf=ALeKk00M_T9xjjLhDLa3KxNNrMX9v5uBdQ%3A1596587347643&ei=U_0pX7TVJvGFhbIP57yrkAg&q=array+forEach&oq=array+forEach&gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgAEEc6BAgAEEM6CAgAELEDEIMBOgcIABAUEIcCUKcPWOQaYKccaAFwAXgAgAFqiAHnBJIBAzcuMZgBAKABAaoBB2d3cy13aXrAAQE&sclient=psy-ab&ved=0ahUKEwj0ytWt54LrAhXxQkEAHWfeCoIQ4dUDCAw&uact=5
+##### Array.prototype.forEach() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 ##### Array.prototype.push() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
 ##### Array.prototype.join() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
 ##### When to use .map() or .forEach()? - https://codeburst.io/javascript-map-vs-foreach-f38111822c0f
