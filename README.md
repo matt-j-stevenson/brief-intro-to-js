@@ -24,7 +24,7 @@
 
 #### The .htmls files in each folder contain the exact same 'application', each portion of code generates the exact same output. One difference is that they are designed differently, not the look and feel - but the code structure and the approach to which the actions we need to perform are performed.
 
-##### * Note: There is an annotated version of the DOM-focused CRUD App, this attempts to explain each action and start to dismantle the code in a way that can be interpreted at a lower-level than the plain file w/out comments. The data-driven approach will be annoted soon.
+##### * Note: There is an annotated version of the DOM-focused CRUD App, this attempts to explain each action and start to dismantle the code in a way that can be interpreted at a lower-level than the plain file w/out comments. The data-driven approach will be annotated soon.
 
 ## - Research materials and relevant documentation:
 ##### JavaScript - https://developer.mozilla.org/en-US/docs/Web/JavaScript
