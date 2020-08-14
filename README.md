@@ -1,4 +1,4 @@
-# MRP - A Brief Introduction to JavaScript
+# A Brief Introduction to JavaScript
 ## Creating CRUD (Create, Read, Update, Delete) applications in Vanilla JavaScript
 
 #### Method One:
